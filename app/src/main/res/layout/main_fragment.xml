@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- TODO -->
+    <data>
+
+        <variable
+            name="vm"
+            type="ru.zkv.barcodescanner.presentation.main.MainAndroidViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.main.MainFragment">
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/main_camera"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="?actionBarSize" />
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/main_bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_gravity="bottom"
+            android:background="?colorSurface"
+            app:navigationIcon="@drawable/ic_baseline_image_24" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

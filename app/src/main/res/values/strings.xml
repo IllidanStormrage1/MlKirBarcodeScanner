@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Barcode Scanner</string>
+    <string name="settings">Настройки</string>
+    <string name="history">История</string>
+    <string name="scan">Сканировать</string>
+    <string name="permission_denied_text">Необходимо предоставить разрешение для работы с камерой.</string>
+</resources>

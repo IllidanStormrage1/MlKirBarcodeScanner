@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorAccent">@color/blue</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+
+    </style>
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet_dialog</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="@style/Theme.MaterialComponents.Light.BottomSheetDialog" >
+        <item name="android:windowIsFloating">false</item>
+        <item name="colorAccent">@color/blue</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">?colorSurface</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+</resources>
