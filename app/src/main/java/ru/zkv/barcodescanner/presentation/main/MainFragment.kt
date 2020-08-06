@@ -36,13 +36,11 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = MainFragmentBinding.inflate(layoutInflater).apply {
+    ): View? =
+        MainFragmentBinding.inflate(layoutInflater).apply {
             vm = androidViewModel
             lifecycleOwner = this@MainFragment
-        }
-        return binding.root
-    }
+        }.also { binding = it }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
