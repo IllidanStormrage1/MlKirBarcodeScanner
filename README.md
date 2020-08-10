@@ -5,6 +5,6 @@
 ### TODO
 > ✅ Add photo selection from gallery
 
-> Add focus, zoom, flash for camera
+> ✅ Add focus, ✅flash for camera
 
 > Maybe refactor and replace AndroidViewModel to ViewModel
