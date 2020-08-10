@@ -24,7 +24,7 @@
             android:focusable="true" />
 
         <ProgressBar
-            android:id="@+id/progress_circular"
+            android:id="@+id/main_progress_circular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,7 +36,9 @@
             android:layout_height="?actionBarSize"
             android:layout_gravity="bottom"
             android:background="?colorSurface"
+            app:menu="@menu/main_app_bar_menu"
             app:navigationIcon="@drawable/ic_baseline_image_24" />
+
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

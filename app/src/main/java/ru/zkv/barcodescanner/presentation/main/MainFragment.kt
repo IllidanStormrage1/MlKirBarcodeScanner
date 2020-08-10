@@ -74,7 +74,7 @@ class MainFragment : Fragment() {
                     requireActivity().showToast(string = it.exception.message)
                 }
                 is UIState.Loading -> {
-                    progress_circular.isVisible = it.isVisible
+                    main_progress_circular.isVisible = it.isVisible
                 }
             }
         }
@@ -96,15 +96,26 @@ class MainFragment : Fragment() {
             }
         }
 
-        binding.mainCamera.setOnTouchListener { view, motionEvent ->
+        binding.mainCamera.setOnTouchListener { _, motionEvent ->
             preparedCamera?.let {
-                if (motionEvent.action != MotionEvent.ACTION_UP) return@let
-                val factory = binding.mainCamera.createMeteringPointFactory(it.selector)
-                val point = factory.createPoint(motionEvent.x, motionEvent.y)
-                val action = FocusMeteringAction.Builder(point).build()
-                camera?.cameraControl?.startFocusAndMetering(action)
+                if (motionEvent.action == MotionEvent.ACTION_UP) {
+                    val factory = binding.mainCamera.createMeteringPointFactory(it.selector)
+                    val point = factory.createPoint(motionEvent.x, motionEvent.y)
+                    val action = FocusMeteringAction.Builder(point).build()
+                    camera?.cameraControl?.startFocusAndMetering(action)
+                }
             }
             return@setOnTouchListener true
+        }
+
+        binding.mainBottomBar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_flash -> {
+                    it.isChecked = !it.isChecked
+                    camera?.cameraControl?.enableTorch(it.isChecked)
+                }
+            }
+            return@setOnMenuItemClickListener true
         }
 
     }
