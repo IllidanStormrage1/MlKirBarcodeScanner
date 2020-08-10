@@ -19,7 +19,9 @@
             android:id="@+id/main_camera"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="?actionBarSize" />
+            android:layout_marginBottom="?actionBarSize"
+            android:clickable="true"
+            android:focusable="true" />
 
         <ProgressBar
             android:id="@+id/progress_circular"
