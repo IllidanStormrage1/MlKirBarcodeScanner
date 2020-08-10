@@ -9,8 +9,8 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 import ru.zkv.barcodescanner.domain.model.Barcode
 
-class ImageAnalyzer(private val callback: AnalyzerCallback) : ImageAnalysis.Analyzer,
-    KoinComponent {
+class ImageAnalyzer(private val callback: AnalyzerCallback) :
+    ImageAnalysis.Analyzer, KoinComponent {
 
     private val barcodeScanner: BarcodeScanner by inject()
 
@@ -37,5 +37,3 @@ class ImageAnalyzer(private val callback: AnalyzerCallback) : ImageAnalysis.Anal
                 .addOnFailureListener { exception -> callback.onFailure(exception) }
     }
 }
-
-

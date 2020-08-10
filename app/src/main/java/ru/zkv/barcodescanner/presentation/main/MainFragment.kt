@@ -2,12 +2,15 @@ package ru.zkv.barcodescanner.presentation.main
 
 import android.Manifest
 import android.os.Bundle
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
+import kotlinx.android.synthetic.main.main_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.zkv.barcodescanner.R
@@ -30,7 +33,8 @@ class MainFragment : Fragment() {
         }
     private val pickImageCallback =
         registerForActivityResult(ActivityResultContracts.GetContent()) {
-            // TODO: 06.08.20
+            if (it != null)
+                androidViewModel.analyzeImage(it)
         }
 
     override fun onCreateView(
@@ -57,6 +61,9 @@ class MainFragment : Fragment() {
                 is UIState.Failure -> {
                     requireActivity().showToast(string = it.exception.message)
                 }
+                is UIState.Loading -> {
+                    progress_circular.isVisible = it.isVisible
+                }
             }
         }
 
@@ -73,13 +80,9 @@ class MainFragment : Fragment() {
             }
         }
 
-// TODO: 06.08.20
-//        binding.mainBottomBar.setOnMenuItemClickListener {
-//            when (it.itemId) {
-//                android.R.id.home -> pickImageCallback.launch("images/*")
-//            }
-//            return@setOnMenuItemClickListener true
-//        }
+        binding.mainBottomBar.setNavigationOnClickListener {
+            pickImageCallback.launch("image/*")
+        }
     }
 
     companion object {

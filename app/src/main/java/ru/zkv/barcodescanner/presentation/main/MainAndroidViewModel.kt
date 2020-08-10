@@ -1,6 +1,7 @@
 package ru.zkv.barcodescanner.presentation.main
 
 import android.app.Application
+import android.net.Uri
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
@@ -14,10 +15,13 @@ import ru.zkv.barcodescanner.domain.model.Barcode
 import ru.zkv.barcodescanner.domain.model.PreparedCamera
 import ru.zkv.barcodescanner.domain.usecase.AnalyzerCallback
 import ru.zkv.barcodescanner.domain.usecase.ImageAnalyzer
+import ru.zkv.barcodescanner.domain.usecase.UriImageAnalyzer
 import ru.zkv.barcodescanner.domain.utils.SingleLiveData
 
-class MainAndroidViewModel(private val applicationContext: Application) :
-    AndroidViewModel(applicationContext) {
+class MainAndroidViewModel(
+    private val applicationContext: Application,
+    private val uriImageAnalyzer: UriImageAnalyzer
+) : AndroidViewModel(applicationContext) {
 
     private val _barcodeLiveData: MutableLiveData<UIState> = MutableLiveData()
     val barcodeLiveData: LiveData<UIState> get() = _barcodeLiveData
@@ -59,5 +63,19 @@ class MainAndroidViewModel(private val applicationContext: Application) :
                 )
             }, Dispatchers.IO.asExecutor()
         )
+    }
+
+    internal fun analyzeImage(uri: Uri) {
+        _barcodeLiveData.value = UIState.Loading(true)
+        uriImageAnalyzer.analyze(uri, object : AnalyzerCallback {
+            override fun onSuccess(barcode: Barcode) {
+                _barcodeLiveData.value = UIState.Loading(false)
+                _barcodeLiveData.value = UIState.Success(barcode)
+            }
+
+            override fun onFailure(exception: Exception) {
+                _barcodeLiveData.value = UIState.Failure(exception)
+            }
+        })
     }
 }

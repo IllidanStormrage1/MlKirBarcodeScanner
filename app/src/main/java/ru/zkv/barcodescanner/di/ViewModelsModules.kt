@@ -6,5 +6,5 @@ import org.koin.dsl.module
 import ru.zkv.barcodescanner.presentation.main.MainAndroidViewModel
 
 internal val viewModelModule = module {
-    viewModel { MainAndroidViewModel(androidApplication()) }
+    viewModel { MainAndroidViewModel(androidApplication(), get()) }
 }

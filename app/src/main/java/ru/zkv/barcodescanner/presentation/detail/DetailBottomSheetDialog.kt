@@ -22,7 +22,6 @@ class DetailBottomSheetDialog : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? = DetailBottomSheetDialogBinding.inflate(inflater).also { binding = it }.root
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

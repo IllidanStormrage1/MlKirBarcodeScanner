@@ -4,4 +4,6 @@
     <string name="history">История</string>
     <string name="scan">Сканировать</string>
     <string name="permission_denied_text">Необходимо предоставить разрешение для работы с камерой.</string>
+    <string name="raw_value">RawValue: </string>
+    <string name="format_value">Format: %s</string>
 </resources>

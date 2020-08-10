@@ -9,16 +9,15 @@
     </data>
 
     <LinearLayout
-        android:id="@+id/detain_ll_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/padding_16dp">
 
         <View
-            android:layout_width="48dp"
-            android:layout_height="8dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_width="@dimen/width_48dp"
+            android:layout_height="@dimen/height_8dp"
+            android:layout_gravity="center"
             android:background="@drawable/bottom_sheet_indicator" />
 
         <TextView
@@ -34,10 +33,21 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
         <TextView
-            android:id="@+id/detail_tv_caption2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8dp"
+            android:gravity="start"
+            android:text="@string/raw_value"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+        <TextView
+            android:id="@+id/detail_tv_caption2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_4dp"
+            android:autoLink="all"
+            android:clickable="true"
+            android:focusable="true"
             android:text="@{barcode.rawValue}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
 
@@ -45,8 +55,9 @@
             android:id="@+id/detail_tv_caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_4dp"
             android:gravity="end"
-            android:text="@{`Format: ` + String.valueOf(barcode.format)}"
+            android:text="@{String.format(@string/format_value, String.valueOf(barcode.format))}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
 
     </LinearLayout>
