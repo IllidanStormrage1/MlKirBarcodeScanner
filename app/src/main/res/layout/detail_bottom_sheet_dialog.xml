@@ -30,7 +30,8 @@
             android:focusable="true"
             android:gravity="center"
             android:text="@{barcode.displayValue}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textIsSelectable="true" />
 
         <TextView
             android:layout_width="match_parent"
@@ -49,7 +50,8 @@
             android:clickable="true"
             android:focusable="true"
             android:text="@{barcode.rawValue}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textIsSelectable="true" />
 
         <TextView
             android:id="@+id/detail_tv_caption"
