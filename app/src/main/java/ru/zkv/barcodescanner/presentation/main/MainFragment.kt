@@ -59,10 +59,6 @@ class MainFragment : Fragment() {
 
         configureCamera()
 
-        binding.mainBottomBar.setNavigationOnClickListener {
-            pickImageCallback.launch("image/*")
-        }
-
         androidViewModel.barcodeLiveData.observe(viewLifecycleOwner) {
             when (it) {
                 is UIState.Success -> {
@@ -108,6 +104,10 @@ class MainFragment : Fragment() {
             return@setOnTouchListener true
         }
 
+        binding.mainBottomBar.setNavigationOnClickListener {
+            pickImageCallback.launch("image/*")
+        }
+
         binding.mainBottomBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_flash -> {
@@ -117,7 +117,6 @@ class MainFragment : Fragment() {
             }
             return@setOnMenuItemClickListener true
         }
-
     }
 
     companion object {
