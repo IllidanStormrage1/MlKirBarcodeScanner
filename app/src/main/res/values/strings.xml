@@ -4,4 +4,6 @@
     <string name="raw_value">RawValue: </string>
     <string name="format_value">Format: %s</string>
     <string name="flash">flash</string>
+    <string name="detail_search_in_internet">Search in internet</string>
+    <string name="detail_google_url">"https://www.google.com/search?q=%s"</string>
 </resources>

@@ -42,7 +42,7 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
 
         <TextView
-            android:id="@+id/detail_tv_caption2"
+            android:id="@+id/detail_tv_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_4dp"
@@ -60,7 +60,21 @@
             android:layout_marginTop="@dimen/margin_4dp"
             android:gravity="end"
             android:text="@{String.format(@string/format_value, String.valueOf(barcode.format))}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/detail_tv_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_4dp"
+            android:autoLink="all"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/detail_search_in_internet"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textColor="?colorAccent" />
 
     </LinearLayout>
 </layout>

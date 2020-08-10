@@ -1,5 +1,7 @@
 package ru.zkv.barcodescanner.presentation.detail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +27,14 @@ class DetailBottomSheetDialog : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.let { binding.barcode = it.getParcelable(barcodeKey) }
+        arguments?.let {
+            val barcode: Barcode? = it.getParcelable(barcodeKey)
+            binding.barcode = barcode
+            binding.detailTvSearch.setOnClickListener {
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse(resources.getString(R.string.detail_google_url).format(barcode?.displayValue))))
+            }
+        }
     }
 
     companion object {
